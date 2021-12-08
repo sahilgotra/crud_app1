@@ -1,0 +1,28 @@
+
+{% extends 'myapp/index.html' %}
+
+{% block title %}Show Data{% endblock title %}
+
+{% block content %}
+<div class="container my-4">
+  <div class=" col-md-4 shadow p-3 mb-5 bg-body rounded">
+  {% for row in data %}
+    <p><img src = "{{row.image.url}}" width="150px" height="150px"></p>
+    <p>Name : {{row.name}}</p>
+    <p>Date of Birth: {{row.dob}}</p>
+    <p>Gender: {{row.gender}}</p>
+    <p>State : {{row.state}}</p>
+    <p>City : {{row.city}}</p>
+    <p>Pin : {{row.pin}}</p>
+    <p>Mobile : {{row.mobile}}</p>
+    <p>Email : {{row.email}}</p>
+    <p>Job Location : {{row.job_location}}</p>
+    
+    <p>File : <a href = "{{row.file.url}}"> Download</p></a>
+    <a href="{% url 'edit' row.id %}">edit</a>
+    <a href="{% url 'delete' row.id %}">Delete</a>
+  <hr>
+  {% endfor %}
+  </div>
+</div>
+  {% endblock content %}
